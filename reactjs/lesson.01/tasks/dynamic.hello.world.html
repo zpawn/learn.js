@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dymanic Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="hello"></div>
+
+<script type="text/babel">
+    class DynamicHelloWorls extends React.Component {
+        constructor (props) {
+            super(props);
+            this.handleChange = this.handleChange.bind(this);
+            this.state = {
+                input: 'Stranger'
+            };
+        }
+
+        handleChange (e) {
+            this.setState({
+                input: e.target.value
+            });
+        }
+
+        render () {
+            return (
+                <div>
+                    <input type="text" onChange={this.handleChange} />
+                    <h1>Hello, {this.state.input}!</h1>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <DynamicHelloWorls/>,
+        document.getElementById('hello')
+    );
+</script>
+
+</body>
+</html>
