@@ -1,3 +1,13 @@
+class Search extends React.Component {
+    render () {
+        return (
+            <div className="notes-search">
+                <input type="search" placeholder="Search..." onChange={this.props.onSearch}/>
+            </div>
+        );
+    }
+}
+
 class Note extends React.Component {
     render () {
         let styles = { backgroundColor: this.props.color };
@@ -23,7 +33,10 @@ class Color extends React.Component {
     render () {
         let style = { backgroundColor: this.props.color };
         return (
-            <a className={this.props.active ? 'active' : ''} style={style} href="javascript:void(0)" onClick={this.handleSelectColor.bind(null, this.props.color)}></a>
+            <a className={this.props.active ? 'active' : ''}
+                style={style} href="javascript:void(0)"
+                onClick={this.handleSelectColor.bind(null, this.props.color)}
+            />
         );
     }
 }
@@ -138,36 +151,47 @@ class NotesApp extends React.Component {
         super(props);
         this.handleNoteAdd = this.handleNoteAdd.bind(this);
         this.handleNoteDelete = this.handleNoteDelete.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
         this.state = { notes: [] };
     }
 
     componentDidMount () {
-        let localNotes = JSON.parse(localStorage.getItem('notes'));
-        if (localNotes) {
-            this.setState({ notes: localNotes });
+        this.notes = JSON.parse(localStorage.getItem('notes'));
+        if (this.notes) {
+            this.setState({ notes: this.notes });
         }
     }
 
-    componentDidUpdate () {
-        this._updateLocalStorage();
-    }
-
     handleNoteAdd (newNote) {
-        let newNotes = this.state.notes.slice();
+        let newNotes = this.notes.slice();
         newNotes.unshift(newNote);
-        this.setState({ notes: newNotes });
+        this.notes = newNotes;
+        this.setState({
+            notes: newNotes,
+        }, this._updateLocalStorage());
     }
 
     handleNoteDelete (note) {
         let noteId = note.id,
-            newNotes = this.state.notes.filter(note => note.id !== noteId);
-        this.setState({ notes: newNotes  });
+            newNotes = this.notes.filter(note => note.id !== noteId);
+        this.notes = newNotes;
+        this.setState({notes: newNotes}, this._updateLocalStorage());
+    }
+
+    handleSearch (e) {
+        let searchQuery = e.target.value.trim().toLowerCase();
+        let newNotes = searchQuery.length
+            ? this.notes.filter(note => note.text.toLowerCase().includes(searchQuery))
+            : this.notes;
+
+        this.setState({notes: newNotes});
     }
 
     render () {
         return (
             <div className="notes-app">
                 <h2 className="app-header">NotesApp</h2>
+                <Search onSearch={this.handleSearch}/>
                 <NoteEditor onNoteAdd={this.handleNoteAdd}/>
                 <NotesGrid notes={this.state.notes} onNoteDelete={this.handleNoteDelete}/>
             </div>
@@ -175,7 +199,7 @@ class NotesApp extends React.Component {
     }
 
     _updateLocalStorage () {
-        let notes = JSON.stringify(this.state.notes);
+        let notes = JSON.stringify(this.notes);
         localStorage.setItem('notes', notes);
     }
 }
