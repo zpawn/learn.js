@@ -1,0 +1,77 @@
+:root {
+    --font-size-base: 24px;
+    --font-family: sans-serif;
+    --text-color: #212529;
+    --text-color-light: #ced4da;
+    --border-color: #ced4da;
+    --border-width: 2px;
+    --border-radius: 2px;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+}
+
+/** Common */
+.form-control {
+    border: none;
+    font-size: var(--font-size-base);
+}
+
+.btn-link,
+.btn-link:hover {
+    color: var(--text-color-light);
+}
+
+.btn:hover { cursor: pointer }
+/** ./Common */
+
+/** ToDo List App */
+.todo {
+    max-width: 480px;
+    margin: 50px auto;
+}
+    .todo__new {
+        border: var(--border-width) solid var(--border-color);
+        border-bottom-width: 0;
+        border-top-left-radius: var(--border-width);
+        border-top-right-radius: var(--border-width);
+        padding: 10px;
+    }
+
+    .todo__list {
+        border: var(--border-width) solid var(--border-color);
+        border-bottom-right-radius: var(--border-width);
+        border-bottom-left-radius: var(--border-width);
+        padding: 20px;
+    }
+
+    .todo__task {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+        .todo__task-completed {
+            color: var(--text-color-light);
+        }
+
+        .todo__task-completed .todo__task-name { text-decoration: line-through }
+
+        .todo__task-done {
+            margin: 0;
+        }
+        .todo__task-name {
+            flex-grow: 1;
+        }
+        .todo__task-delete {
+            color: var(--text-color-light);
+        }
+            .todo__task-delete:hover {text-decoration: none}
+
+    .todo__filter {
+        display: flex;
+        justify-content: center;
+    }
+/** ./ToDo List App */
+
