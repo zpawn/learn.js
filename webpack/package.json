@@ -2,7 +2,8 @@
     "name": "webpack-workshop",
     "version": "1.0.0",
     "scripts": {
-        "serv": "node ./server/index.js"
+        "serv": "node ./server/index.js",
+        "build": "webpack"
     },
     "private": true,
     "devDependencies": {
