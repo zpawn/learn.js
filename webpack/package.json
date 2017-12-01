@@ -7,6 +7,19 @@
     },
     "private": true,
     "devDependencies": {
-        "express": "^4.16.2"
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-plugin-lodash": "^3.3.2",
+        "babel-preset-env": "^1.6.1",
+        "css-loader": "^0.28.7",
+        "express": "^4.16.2",
+        "extract-text-webpack-plugin": "^3.0.2",
+        "style-loader": "^0.19.0",
+        "webpack": "^3.9.1"
+    },
+    "dependencies": {
+        "lodash": "^4.17.4",
+        "markdown": "^0.5.0",
+        "moment": "^2.19.3"
     }
 }
