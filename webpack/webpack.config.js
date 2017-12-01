@@ -11,7 +11,8 @@ const config = {
     },
     output: {
         path: path.resolve(__dirname, 'public', 'assets'),
-        filename: '[name].js'
+        filename: '[name].js',
+        publicPath: '/assets/'
     },
     module: {
         rules: [
@@ -39,7 +40,7 @@ const config = {
                                     browsers: ["last 2 versions", "ie >= 11"]
                                 }
                             }]],
-                            plugins: ['lodash']
+                            plugins: ['lodash', 'syntax-dynamic-import']
                         }
                     }
                 ]
