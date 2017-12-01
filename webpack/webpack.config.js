@@ -63,6 +63,8 @@ if (isProd) {
         }),
     ]);
 
+    config.module.rules[0].use = ['css-hot-loader'].concat(config.module.rules[0].use);
+
     config.devServer = {
         contentBase: path.resolve(__dirname, 'public'),
         publicPath: '/feed/',
