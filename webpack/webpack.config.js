@@ -2,7 +2,9 @@ const path = require('path'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
+const isProd = process.env.NODE_ENV === 'prod';
+
+const config = {
     entry: './src/Feed/index.js',
     output: {
         path: path.resolve(__dirname, 'public', 'feed'),
@@ -41,12 +43,35 @@ module.exports = {
             }
         ]
     },
-    plugins: [
+    plugins: []
+};
+
+if (isProd) {
+    config.plugins = config.plugins.concat([
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new ExtractTextPlugin('feed.css'),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"'
+            'process.env.NODE_ENV': '"prod"'
         })
-    ]
-};
+    ]);
+} else {
+    config.plugins = config.plugins.concat([
+        new ExtractTextPlugin({
+            filename: 'feed.css',
+            disable: true
+        }),
+    ]);
+
+    config.devServer = {
+        contentBase: path.resolve(__dirname, 'public'),
+        publicPath: '/feed/',
+        port: 9000,
+        proxy: {
+            '/data': 'http://localhost:3000'
+        },
+
+    };
+}
+
+module.exports = config;
