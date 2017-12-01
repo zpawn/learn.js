@@ -5,10 +5,13 @@ const path = require('path'),
 const isProd = process.env.NODE_ENV === 'prod';
 
 const config = {
-    entry: './src/Feed/index.js',
+    entry: {
+        home: './src/Home/index.js',
+        feed: './src/Feed/index.js'
+    },
     output: {
-        path: path.resolve(__dirname, 'public', 'feed'),
-        filename: 'index.js'
+        path: path.resolve(__dirname, 'public', 'assets'),
+        filename: '[name].js'
     },
     module: {
         rules: [
