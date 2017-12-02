@@ -1,10 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const outputPath = path.resolve(__dirname, 'lesson.03', 'tasks', 'contacts', 'public', 'build');
+const outputPath = path.resolve(__dirname, 'lesson.03', 'tasks', 'articles', 'public', 'build');
 
 const webpackConfig = {
-    entry: path.resolve(__dirname, 'lesson.03', 'tasks', 'contacts', 'src', 'app.jsx'),
+    entry: path.resolve(__dirname, 'lesson.03', 'tasks', 'articles', 'src', 'app.jsx'),
     output: {
         path: outputPath,
         filename: 'bundle.js'
@@ -31,7 +31,7 @@ const webpackConfig = {
     },
     plugins: [],
     devServer: {
-        contentBase: path.resolve(__dirname, 'lesson.03', 'tasks', 'contacts', 'public'),
+        contentBase: path.resolve(__dirname, 'lesson.03', 'tasks', 'articles', 'public'),
         publicPath: '/build/',
         host: '0.0.0.0',
         port: 9000,
