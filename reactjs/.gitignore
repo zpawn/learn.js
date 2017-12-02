@@ -1,2 +1,5 @@
 /.idea
 /node_modules/
+
+### Lessons
+/lesson.03/lecture/public/build/
