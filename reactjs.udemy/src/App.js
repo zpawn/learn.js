@@ -7,7 +7,7 @@ class App extends Component {
     state = {
         persons: [
             { name: 'Max', age: 28 },
-            { name: 'Manu', age: 29, hobbies: 'Racing' },
+            { name: 'Manu', age: 29 },
             { name: 'Stephanie', age: 26 }
         ]
     };
@@ -16,7 +16,7 @@ class App extends Component {
         this.setState({
             persons: [
                 { name: 'Maximilian', age: 28 },
-                { name: 'Manu', age: 29, hobbies: 'Racing' },
+                { name: 'Manu', age: 29 },
                 { name: 'Stephanie', age: 27 }
             ]
         });
@@ -30,9 +30,16 @@ class App extends Component {
 
                 <button onClick={this.switchNameHandler}>Switch Name</button>
 
-                <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-                <Person name={this.state.persons[1].name} age={this.state.persons[1].age}></Person>
-                <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+                <Person
+                    name={this.state.persons[0].name}
+                    age={this.state.persons[0].age} />
+                <Person
+                    name={this.state.persons[1].name}
+                    age={this.state.persons[1].age}
+                    click={this.switchNameHandler}>My Hobbies: 'Racing'</Person>
+                <Person
+                    name={this.state.persons[2].name}
+                    age={this.state.persons[2].age}/>
             </div>
         );
     }
