@@ -1,86 +1,47 @@
 import React, { Component } from 'react';
-import nanoid from 'nanoid';
 import './App.css';
-import Person from './Person/Person';
+import Validation from './Components/Validation/Validation';
+import Char from './Components/Char/Char';
 
 class App extends Component {
 
     state = {
-        persons: [
-            { id: nanoid(), name: 'Max', age: 28 },
-            { id: nanoid(), name: 'Manu', age: 29 },
-            { id: nanoid(), name: 'Stephanie', age: 26 }
-        ],
-        showPersons: false
+        chars: [],
+        length: 0
     }
 
-    nameChangedHandler = (event, id) => {
+    textChangeHandler = (e) => {
+        const chars = e.target.value.split('');
 
-        const persons = [ ...this.state.persons ];
-        const personId = this.state.persons.findIndex(p => p.id === id);
-        const person = { ...this.state.persons[personId] };
-
-        // or copy obj
-        // const person = Object.assign({}, this.state.persons[personId]);
-
-        person.name = event.target.value;
-
-        persons[personId] = person;
-
-        this.setState({ persons: persons });
+        this.setState({
+            chars: chars,
+            length: chars.length
+        });
     }
 
-    deletePersonHandler = (index) => {
-        const persons = [...this.state.persons];
-        persons.splice(index, 1);
-        this.setState({persons: persons});
-    }
-
-    togglePersonsHandler = () => {
-        this.setState({ showPersons: !this.state.showPersons });
+    removeCharHandler = (index) => {
+        const chars = [ ...this.state.chars ];
+        chars.splice(index, 1);
+        this.setState({ chars: chars });
     }
 
     render() {
 
-        const style = {
-            backgroundColor: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer'
-        };
-
-        let persons = null;
-
-
-        if (this.state.showPersons) {
-            persons = (
-                <div>
-                    {
-                        this.state.persons.map(person => {
-                            return <Person
-                                key={person.id}
-                                name={person.name}
-                                age={person.age}
-                                click={this.deletePersonHandler.bind(this, person.id)}
-                                changed={event => this.nameChangedHandler(event, person.id)}
-                            />
-                        })
-                    }
-                </div>
-            );
-        }
+        let chars = this.state.chars.join(''),
+            charsList = this.state.chars.map((char, index) => {
+                return <Char
+                    key={index}
+                    char={char}
+                    clicked={this.removeCharHandler.bind(this, index)}
+                />
+            });
 
         return (
             <div className="App">
-                <h1>Hi, I'm a React App</h1>
-                <p>This is really working!</p>
-
-                <button
-                    style={style}
-                    onClick={this.togglePersonsHandler}>Toggle Persons</button>
-
-                {persons}
+                <input type="text" value={chars} onChange={this.textChangeHandler.bind(this)}/>
+                <p>{chars}</p>
+                <Validation length={this.state.length}/>
+                <div>{charsList}</div>
             </div>
         );
     }
