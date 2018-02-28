@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import nanoid from 'nanoid';
 import './App.css';
 import Person from './Person/Person';
 
@@ -6,9 +7,9 @@ class App extends Component {
 
     state = {
         persons: [
-            { name: 'Max', age: 28 },
-            { name: 'Manu', age: 29 },
-            { name: 'Stephanie', age: 26 }
+            { id: nanoid(), name: 'Max', age: 28 },
+            { id: nanoid(), name: 'Manu', age: 29 },
+            { id: nanoid(), name: 'Stephanie', age: 26 }
         ],
         showPersons: false
     }
@@ -45,15 +46,17 @@ class App extends Component {
 
         let persons = null;
 
+
         if (this.state.showPersons) {
             persons = (
                 <div>
                     {
-                        this.state.persons.map((person, index) => {
+                        this.state.persons.map(person => {
                             return <Person
+                                key={person.id}
                                 name={person.name}
                                 age={person.age}
-                                click={this.deletePersonHandler.bind(this, index)}
+                                click={this.deletePersonHandler.bind(this, person.id)}
                             />
                         })
                     }
