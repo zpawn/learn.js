@@ -3,7 +3,6 @@ import nanoid from 'nanoid';
 
 import classes from './App.css';
 import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 
@@ -21,9 +20,6 @@ class App extends Component {
         const persons = [ ...this.state.persons ];
         const personId = this.state.persons.findIndex(p => p.id === id);
         const person = { ...this.state.persons[personId] };
-
-        // or copy obj
-        // const person = Object.assign({}, this.state.persons[personId]);
 
         person.name = event.target.value;
 
@@ -51,14 +47,13 @@ class App extends Component {
                 <div>
                     {
                         this.state.persons.map(person => {
-                            return <ErrorBoundary key={person.id}>
-                                <Person
-                                    name={person.name}
-                                    age={person.age}
-                                    click={this.deletePersonHandler.bind(this, person.id)}
-                                    changed={event => this.nameChangedHandler(event, person.id)}
-                                />
-                            </ErrorBoundary>
+                            return <Person
+                                key={person.id}
+                                name={person.name}
+                                age={person.age}
+                                click={this.deletePersonHandler.bind(this, person.id)}
+                                changed={event => this.nameChangedHandler(event, person.id)}
+                            />
                         })
                     }
                 </div>
