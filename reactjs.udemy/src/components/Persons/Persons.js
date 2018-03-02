@@ -5,7 +5,7 @@ class Persons extends Component {
 
     constructor (props) {
         super(props);
-        console.log('[Persons.js] constructor');
+        console.log('[Persons.js] constructor', props);
     }
 
     componentWillMount () {
@@ -18,6 +18,23 @@ class Persons extends Component {
 
     componentWillUnmount () {
         console.log('[Persons.js] componentWillUnmount');
+    }
+
+    componentWillReceiveProps (nextProps) {
+        console.log('[UPDATE Persons.js] componentWillReceiveProps', nextProps);
+    }
+
+    shouldComponentUpdate (nextProps, nextState) {
+        console.log('[UPDATE Persons.js] shouldComponentUpdate', nextProps, nextState);
+        return nextProps.persons !== this.props.persons;
+    }
+
+    componentWillUpdate (nextProps, nextState) {
+        console.log('[UPDATE Persons.js] componentWillUpdate', nextProps, nextState);
+    }
+
+    componentDidUpdate () {
+        console.log('[UPDATE Persons.js] componentDidUpdate');
     }
 
     render() {
