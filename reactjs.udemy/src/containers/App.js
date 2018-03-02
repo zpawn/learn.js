@@ -8,14 +8,29 @@ import classes from './App.css';
 
 class App extends Component {
 
-    state = {
-        persons: [
-            { id: nanoid(), name: 'Max', age: 28 },
-            { id: nanoid(), name: 'Manu', age: 29 },
-            { id: nanoid(), name: 'Stephanie', age: 26 }
-        ],
-        showPersons: false
+    constructor (props) {
+        super(props);
+        console.log('[App.js] Constructor', props);
+
+        this.state = {
+            persons: [
+                { id: nanoid(), name: 'Max', age: 28 },
+                { id: nanoid(), name: 'Manu', age: 29 },
+                { id: nanoid(), name: 'Stephanie', age: 26 }
+            ],
+            showPersons: false
+        };
     }
+
+    componentWillMount () {
+        console.log('[App.js] componentWillMount');
+    }
+
+    componentDidMount () {
+        console.log('[App.js] componentDidMount');
+    }
+
+    ////
 
     nameChangedHandler = (event, id) => {
 
@@ -41,6 +56,9 @@ class App extends Component {
     }
 
     render() {
+
+        console.log('[App.js] render');
+
         let persons = null;
 
         if (this.state.showPersons) {
