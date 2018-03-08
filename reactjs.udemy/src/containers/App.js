@@ -20,7 +20,8 @@ class App extends PureComponent {
                 { id: nanoid(), name: 'Manu', age: 29 },
                 { id: nanoid(), name: 'Stephanie', age: 26 }
             ],
-            showPersons: false
+            showPersons: false,
+            toggleClicked: 0
         };
     }
 
@@ -72,7 +73,13 @@ class App extends PureComponent {
     }
 
     togglePersonsHandler = () => {
-        this.setState({ showPersons: !this.state.showPersons });
+        const doesShow = this.state.showPersons;
+        this.setState( (prevState, props) => {
+            return {
+                showPersons: !doesShow,
+                toggleClicked: prevState.toggleClicked + 1
+            }
+        });
     }
 
     render() {
