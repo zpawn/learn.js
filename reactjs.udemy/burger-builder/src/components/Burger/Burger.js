@@ -5,8 +5,6 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = (props) => {
 
-    // console.log('>>> state:', props.ingredients);
-
     // extract keys into array
     let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
@@ -18,8 +16,6 @@ const burger = (props) => {
             arr = arr.concat(el);
             return arr;
         }, []);
-
-    // console.log('>>> update:', transformedIngredients);
 
     if (transformedIngredients.length === 0) {
         transformedIngredients = <p>Please start adding ingredients!</p>
