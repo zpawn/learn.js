@@ -30,6 +30,7 @@ class Blog extends Component {
                 });
             })
             .catch(err => {
+                console.log('>>> errBlog:', err);
                 this.setState({ error: true });
             });
     }
