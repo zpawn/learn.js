@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Course extends Component {
-    render () {
-        return (
-            <div>
-                <h1>_COURSE_TITLE_</h1>
-                <p>You selected the Course with ID: _ID_</p>
-            </div>
-        );
-    }
-}
+const course = (props) => (
+    <div>
+        <h1>{props.match.params.title}</h1>
+        <p>You selected the Course with ID: <strong>{props.match.params.id}</strong></p>
+    </div>
+);
 
-export default Course;
+export default course;
