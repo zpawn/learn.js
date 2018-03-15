@@ -26,7 +26,13 @@ class NewPost extends Component {
         axios.post('/posts', data)
             .then(res => {
                 console.log('>>> resNewPost:', res);
-                this.setState({ submitted: true });
+                // this.setState({ submitted: true });
+
+                // if need to work button 'back'
+                // this.props.history.push('/posts');
+
+                // Always redirect, because replace this.state
+                this.props.history.replace('/posts');
             });
     }
 
