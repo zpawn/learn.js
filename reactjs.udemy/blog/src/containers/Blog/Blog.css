@@ -16,6 +16,7 @@
 }
 
 .Blog nav a:hover,
-.Blog nav a:active {
+.Blog nav a:active,
+.Blog nav a.active {
     color: #fa923f;
 }
