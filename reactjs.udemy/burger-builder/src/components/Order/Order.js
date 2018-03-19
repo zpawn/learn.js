@@ -26,8 +26,6 @@ const order = (props) => {
         >{ig.name} ({ig.count})</span>)
     );
 
-    console.log('>>> ig:', ingredientsOutput);
-
     return (
         <div className={classes.Order}>
             <p>Ingredients: {ingredientsOutput}</p>
