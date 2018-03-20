@@ -85,13 +85,19 @@ class ContactData extends Component {
 
     render () {
 
+        const formFieldsName = Object.keys(this.state.orderForm);
+
         let form = (
             <form>
-                <Input elementType='...' elementConfig='...' value='...'/>
-                {/*<Input inputtype="input" type="text" name="email" placeholder="Your Email"/>*/}
-                {/*<Input inputtype="input" type="text" name="street" placeholder="Street"/>*/}
-                {/*<Input inputtype="input" type="text" name="postalCode" placeholder="Postal Code"/>*/}
-                {/*<Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>*/}
+                {formFieldsName.map(fieldName => (
+                    <Input
+                        key={fieldName}
+                        elementType={this.state.orderForm[fieldName].elementType}
+                        elementConfig={this.state.orderForm[fieldName].elementConfig}
+                        value={this.state.orderForm[fieldName].value}
+                    />
+                ))}
+                <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
             </form>
         );
 
