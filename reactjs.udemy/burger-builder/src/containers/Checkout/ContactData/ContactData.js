@@ -63,6 +63,19 @@ class ContactData extends Component {
         loading: false
     }
 
+    inputChangedHandler = (e, fieldName) => {
+
+        const updatedOrderForm = { ...this.state.orderForm };
+
+        // Deep Clone
+        const updatedFormElement = { ...updatedOrderForm[fieldName] };
+
+        updatedFormElement.value = e.target.value;
+        updatedOrderForm[fieldName] = updatedFormElement;
+
+        this.setState({ orderForm: updatedOrderForm });
+    }
+
     orderHandler = (e) => {
         e.preventDefault();
 
@@ -95,6 +108,7 @@ class ContactData extends Component {
                         elementType={this.state.orderForm[fieldName].elementType}
                         elementConfig={this.state.orderForm[fieldName].elementConfig}
                         value={this.state.orderForm[fieldName].value}
+                        changed={(e) => this.inputChangedHandler(e, fieldName)}
                     />
                 ))}
                 <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
