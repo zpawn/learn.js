@@ -12,8 +12,8 @@ const reducer = (state = initState, action) => {
         case actionTypes.ADD_PERSON:
             const newPerson = {
                 id: nanoid(),
-                name: 'Max',
-                age: Math.floor( Math.random() * 40 )
+                name: action.person.name,
+                age: action.person.age
             };
 
             return {
