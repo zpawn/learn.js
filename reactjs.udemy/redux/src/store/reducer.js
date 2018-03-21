@@ -4,7 +4,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-
     switch (action.type) {
         case 'INCREMENT':
             const newState = Object.assign({}, state);
@@ -33,15 +32,21 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 results: state.results.concat({
-                    id: new Date(),
+                    id: Date.now(),
                     value: state.counter
                 })
             };
 
         case 'DELETE_RESULT':
+            // const id = 2,
+            //     newArray = [...state.results];
+            //
+            // newArray.splice(id, 1);
+            const updatedArray = state.results.filter(result => result.id !== action.resultElId);
+
             return {
                 ...state,
-                results: []
+                results: updatedArray
             };
 
         default:
