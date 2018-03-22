@@ -10,8 +10,6 @@ export const saveResult = (result) => {
 export const storeResult = (result) => {
     return (dispatch, getState) => {
         setTimeout(() => {
-            const oldCounter = getState().ctr.counter;
-            console.log('>>> oldCounter:', oldCounter);
             dispatch(saveResult(result));
         }, 2000);
     }
