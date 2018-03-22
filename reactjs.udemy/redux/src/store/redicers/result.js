@@ -5,6 +5,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+
     switch (action.type) {
         case actionTypes.STORE_RESULT:
             return {
@@ -16,7 +17,7 @@ const reducer = (state = initialState, action) => {
             };
 
         case actionTypes.DELETE_RESULT:
-            const updatedArray = action.results.filter(result => result.id !== action.resultElId);
+            const updatedArray = state.results.filter(result => result.id !== action.resultElId);
 
             return {
                 ...state,
