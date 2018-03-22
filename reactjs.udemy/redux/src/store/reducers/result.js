@@ -7,11 +7,12 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.STORE_RESULT:
+            // Changed Data
             return {
                 ...state,
                 results: state.results.concat({
                     id: Date.now(),
-                    value: action.result
+                    value: action.result * 2
                 })
             };
 
