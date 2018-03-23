@@ -6,27 +6,19 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import axios from '../../axios-orders';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import axios from '../../axios-orders';
 import * as actionTypes from '../../store/actions/index';
 
 class BurgerBuilder extends Component {
 
     state = {
-        purchasing: false,
-        loading: false,
-        error: false
+        purchasing: false
     }
 
     componentDidMount () {
-        // axios.get('/ingredients.json')
-        //     .then(res => {
-        //         this.setState({ ingredients: res.data });
-        //     })
-        //     .catch(err => {
-        //         this.setState({ error: true });
-        //     });
+
     }
 
     updatePurchaseState = (ingredients) => {
@@ -84,10 +76,6 @@ class BurgerBuilder extends Component {
             />
         }
 
-        if (this.state.loading) {
-            orderSummary = <Spinner/>
-        }
-
         return (
             <Aux>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
@@ -108,8 +96,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch(actionTypes.addIngredients(ingName)),
-        onIngredientRemoved: (ingName) => dispatch(actionTypes.removeIngredients(ingName))
+        onIngredientAdded: (ingName) => dispatch(actionTypes.addIngredient(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(actionTypes.removeIngredient(ingName))
     };
 };
 
