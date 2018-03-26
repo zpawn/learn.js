@@ -8,8 +8,6 @@ const initState = {
 
 const reducer = (state = initState, action) => {
 
-    console.log('>>> orderReducer:', state, action);
-
     switch (action.type) {
         case actionTypes.PURCHASE_INIT:
             return {
@@ -40,6 +38,34 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 leading: false
+            };
+
+        case actionTypes.FETCH_ORDERS_START:
+            return {
+                ...state,
+                loading: true
+            };
+
+        case actionTypes.FETCH_ORDERS_SUCCESS:
+            const fetchedOrders = [];
+
+            for (let orderId in action.orders) {
+                fetchedOrders.push({
+                    ...action.orders[orderId],
+                    id: orderId
+                });
+            }
+
+            return {
+                ...state,
+                orders: fetchedOrders,
+                loading: false
+            };
+
+        case actionTypes.FETCH_ORDERS_FAIL:
+            return {
+                ...state,
+                loading: false
             };
 
         default:
