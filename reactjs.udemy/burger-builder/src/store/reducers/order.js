@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import { updateObject } from '../Utility';
 
 const initState = {
     orders: [],
@@ -10,41 +11,25 @@ const reducer = (state = initState, action) => {
 
     switch (action.type) {
         case actionTypes.PURCHASE_INIT:
-            return {
-                ...state,
-                purchased: false
-            };
+            return updateObject(state, { purchased: false });
 
         case actionTypes.PURCHASE_BURGER_START:
-            return {
-                ...state,
-                loading: true
-            };
+            return updateObject(state, { loading: true });
 
         case actionTypes.PURCHASE_BURGER_SUCCESS:
-            const newOrder = {
-                ...action.orderData,
-                id: action.orderId
-            };
+            const newOrder = updateObject(action.orderData, { id: action.orderId });
 
-            return {
-                ...state,
+            return updateObject(state, {
                 leading: false,
                 purchased: true,
                 orders: state.orders.concat(newOrder)
-            };
+            });
 
         case actionTypes.PURCHASE_BURGER_FAIL:
-            return {
-                ...state,
-                leading: false
-            };
+            return updateObject(state, { leading: false });
 
         case actionTypes.FETCH_ORDERS_START:
-            return {
-                ...state,
-                loading: true
-            };
+            return updateObject(state, { leading: true });
 
         case actionTypes.FETCH_ORDERS_SUCCESS:
             const fetchedOrders = [];
@@ -56,17 +41,13 @@ const reducer = (state = initState, action) => {
                 });
             }
 
-            return {
-                ...state,
+            return updateObject(state, {
                 orders: fetchedOrders,
                 loading: false
-            };
+            });
 
         case actionTypes.FETCH_ORDERS_FAIL:
-            return {
-                ...state,
-                loading: false
-            };
+            return updateObject(state, { loading: false });
 
         default:
             return state;
