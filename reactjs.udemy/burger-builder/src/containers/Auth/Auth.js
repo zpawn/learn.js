@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import classes from './Auth.css';
 import Input from '../../components/UI/Input/Input';
@@ -93,6 +94,10 @@ class Auth extends Component {
 
     render () {
 
+        if (this.props.isAuth) {
+            return <Redirect to="/"/>;
+        }
+
         const formField = Object.keys(this.state.controls);
         let form = formField.map(fieldName => (
             <Input
@@ -133,7 +138,8 @@ class Auth extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
-        error: state.auth.error
+        error: state.auth.error,
+        isAuth: state.auth.token !== null
     };
 };
 
