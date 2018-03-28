@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classes from './Auth.css';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
+import Spiner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
 
 class Auth extends Component {
@@ -93,23 +94,31 @@ class Auth extends Component {
     render () {
 
         const formField = Object.keys(this.state.controls);
+        let form = formField.map(fieldName => (
+            <Input
+                key={fieldName}
+                elementType={this.state.controls[fieldName].elementType}
+                elementConfig={this.state.controls[fieldName].elementConfig}
+                value={this.state.controls[fieldName].value}
+                invalid={!this.state.controls[fieldName].valid}
+                shouldValidate={this.state.controls[fieldName].validation}
+                touched={this.state.controls[fieldName].touched}
+                changed={(e) => this.inputChangedHandler(e, fieldName)}
+            />
+        ));
+
+        if (this.props.loading) {
+            form = <Spiner/>;
+        }
+
+        let errorMessage = !this.props.error ? null : (<p>{this.props.error.message}</p>);
 
         return (
             <div className={classes.Auth}>
                 <h3>{this.state.isSignup ? 'Sign In' : 'Login'}</h3>
+                {errorMessage}
                 <form onSubmit={this.submitHandler}>
-                    {formField.map(fieldName => (
-                        <Input
-                            key={fieldName}
-                            elementType={this.state.controls[fieldName].elementType}
-                            elementConfig={this.state.controls[fieldName].elementConfig}
-                            value={this.state.controls[fieldName].value}
-                            invalid={!this.state.controls[fieldName].valid}
-                            shouldValidate={this.state.controls[fieldName].validation}
-                            touched={this.state.controls[fieldName].touched}
-                            changed={(e) => this.inputChangedHandler(e, fieldName)}
-                        />
-                    ))}
+                    {form}
                     <Button btnType="Success">SUBMIT</Button>
                 </form>
                 <Button
@@ -123,7 +132,8 @@ class Auth extends Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.auth.loading
+        loading: state.auth.loading,
+        error: state.auth.error
     };
 };
 
