@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import classes from './Auth.css';
-import axios from '../../axios-orders';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import * as actions from '../../store/actions/index';
@@ -40,7 +39,7 @@ class Auth extends Component {
                 touched: false
             }
         },
-        isSignup: true
+        isSignup: false
     }
 
     checkValidity = (value, rules) => {
@@ -97,6 +96,7 @@ class Auth extends Component {
 
         return (
             <div className={classes.Auth}>
+                <h3>{this.state.isSignup ? 'Sign In' : 'Login'}</h3>
                 <form onSubmit={this.submitHandler}>
                     {formField.map(fieldName => (
                         <Input
@@ -121,10 +121,16 @@ class Auth extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading
+    };
+};
+
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup))
     };
 };
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
