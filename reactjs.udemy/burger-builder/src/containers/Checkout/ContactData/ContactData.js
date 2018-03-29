@@ -8,6 +8,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../../store/actions/index';
+import { updateObject } from '../../../shared/Utility';
 
 class ContactData extends Component {
     state = {
@@ -127,15 +128,17 @@ class ContactData extends Component {
 
     inputChangedHandler = (e, fieldName) => {
 
-        const updatedOrderForm = { ...this.state.orderForm };
-
         // Deep Clone
-        const updatedFormElement = { ...updatedOrderForm[fieldName] };
+        const updatedFormElement = updateObject(this.state.orderForm[fieldName], {
+            value: e.target.value,
+            valid: this.checkValidity(e.target.value, this.state.orderForm[fieldName].validation),
+            touched: true
+        });
 
-        updatedFormElement.value = e.target.value;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
-        updatedFormElement.touched = true;
-        updatedOrderForm[fieldName] = updatedFormElement;
+        const updatedOrderForm = updateObject(this.state.orderForm, {
+            [fieldName]: updatedFormElement
+        });
+
 
         let formIsValid = true;
         for (let fieldName in updatedOrderForm) {
