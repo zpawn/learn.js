@@ -7,7 +7,7 @@ import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import Spiner from '../../components/UI/Spinner/Spinner';
 import * as actions from '../../store/actions/index';
-import { updateObject } from '../../shared/Utility';
+import { updateObject, checkValidity } from '../../shared/Utility';
 
 class Auth extends Component {
 
@@ -51,31 +51,12 @@ class Auth extends Component {
         }
     }
 
-    checkValidity = (value, rules) => {
-        let isValid = true;
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-
-        if (rules.isEmail) {
-            const pattern = /.+@.+\..+/g;
-            return pattern.test(value) && isValid;
-        }
-
-        return isValid;
-    }
-
     inputChangedHandler = (e, controlName) => {
 
         const updatedControls = updateObject(this.state.controls, {
             [controlName]: updateObject(this.state.controls[controlName], {
                 value: e.target.value,
-                valid: this.checkValidity(e.target.value, this.state.controls[controlName].validation),
+                valid: checkValidity(e.target.value, this.state.controls[controlName].validation),
                 touched: true
             })
         });

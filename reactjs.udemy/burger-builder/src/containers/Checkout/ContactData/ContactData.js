@@ -8,7 +8,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../../store/actions/index';
-import { updateObject } from '../../../shared/Utility';
+import { updateObject, checkValidity } from '../../../shared/Utility';
 
 class ContactData extends Component {
     state = {
@@ -98,40 +98,12 @@ class ContactData extends Component {
         formIsValid: false
     }
 
-    checkValidity = (value, rules) => {
-        let isValid = true;
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-
-        if (rules.isEmail) {
-            const pattern = /.+@.+\..+/g;
-            return pattern.test(value) && isValid;
-        }
-
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            return pattern.test(value) && isValid;
-        }
-
-        return isValid;
-    }
-
     inputChangedHandler = (e, fieldName) => {
 
         // Deep Clone
         const updatedFormElement = updateObject(this.state.orderForm[fieldName], {
             value: e.target.value,
-            valid: this.checkValidity(e.target.value, this.state.orderForm[fieldName].validation),
+            valid: checkValidity(e.target.value, this.state.orderForm[fieldName].validation),
             touched: true
         });
 
