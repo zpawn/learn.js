@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline",
-    "build": "rimraf dist && webpack --mode=production --profile --color"
+    "build": "rimraf dist && webpack --mode=production --profile --color",
+    "build:dev": "rimraf dist && webpack --profile --color"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "preact": "^8.2.7"
+    "preact": "^8.2.7",
+    "preact-compat": "^3.18.0"
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",

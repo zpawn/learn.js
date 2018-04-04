@@ -21,6 +21,14 @@ module.exports = {
         filename: 'bundle.js'
     },
 
+    // compatibility with React & ReactDOM
+    resolve: {
+        alias: {
+            "react": "preact-compat",
+            "react-dom": "preact-compat"
+        }
+    },
+
     //transformations
     module: {
         rules: [
