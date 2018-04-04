@@ -15,17 +15,11 @@ class Tasks extends Component {
 
         if (this.props.tasks.length) {
             tasks = (
-                <ul>
+                <ul className={classes.Tasks}>
                     {
-                        this.props.tasks.map(
-                            (task, id) => (
-                                <Task
-                                    id={id}
-                                    task={task}
-                                    removed={this.removeTaskHandler}
-                                />
-                            )
-                        )
+                        this.props.tasks.map((task, id) => (
+                            <Task id={id} task={task} removed={this.removeTaskHandler} />
+                        ))
                     }
                 </ul>
             );
