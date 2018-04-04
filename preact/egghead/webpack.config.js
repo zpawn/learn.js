@@ -1,4 +1,5 @@
-const path = require('path');
+const path = require('path'),
+    autoprefixer = require('autoprefixer');
 
 module.exports = {
     /**
@@ -26,13 +27,43 @@ module.exports = {
             {
                 test: /\.jsx?/i,
                 loader: 'babel-loader',
+                exclude: '/node_modules/',
                 options: {
-                    presets: ['env'],
+                    presets: ['env', 'stage-2'],
                     plugins: [
                         ['transform-react-jsx', { pragma: 'h' }]
                     ]
                 }
-            }
+            },
+            {
+                test: /\.css/,
+                exclude: /node_modules/,
+                use: [
+                    { loader: 'style-loader' },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoader: 1,
+                            modules: true,
+                            localIdentName: '[name]__[local]__[hash:base64:5]'
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: () => [
+                                autoprefixer({
+                                    browsers: [
+                                        "> 1%",
+                                        "last 2 versions"
+                                    ]
+                                })
+                            ]
+                        }
+                    }
+                ]
+            },
         ]
     },
 

@@ -1,9 +1,25 @@
 import { h, render, Component } from 'preact';
 
 class Clock extends Component {
+
+    state = {
+        time: new Date().toLocaleTimeString()
+    }
+
+    componentDidMount () {
+        this.timerId = setInterval(() => {
+            this.setState({
+                time: new Date().toLocaleTimeString()
+            });
+        }, 1000);
+    }
+
+    componentWillUnmount () {
+        clearTimeout(this.timerId);
+    }
+
     render () {
-        const time = new Date().toLocaleTimeString();
-        return <span>{time}</span>;
+        return <span>{this.state.time}</span>;
     }
 }
 
