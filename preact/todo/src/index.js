@@ -1,6 +1,15 @@
 import { h, render } from 'preact';
+import { createStore } from 'redux';
+import { Provider } from 'preact-redux';
+
+import App from './App';
+import todoReducer from './store/reducers/todo';
+
+const store = createStore(todoReducer);
 
 render(
-    <h1>Hello, ToDo!</h1>,
+    <Provider store={store}>
+        <App/>
+    </Provider>,
     document.getElementById('preactMountPoint')
 );
