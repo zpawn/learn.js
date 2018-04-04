@@ -3,9 +3,9 @@ ToDo App
 
 Flow
 ---
-`npm start` - run dev server
-`npm build` - build production bundle
-`npm build:dev` - build dev bundle
+* `npm start` - run dev server
+* `npm build` - build production bundle
+* `npm build:dev` - build dev bundle
 
 Size Optimization
 ---
