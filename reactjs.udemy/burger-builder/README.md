@@ -25,3 +25,9 @@ You will have something like this: <br><br>
 
 [**Jest**](https://facebook.github.io/jest/) - Test Runner (executes test and provides validation libraries)
 [**Enzyme**](http://airbnb.io/enzyme/docs/api/) - Testing Utilities ("Simulates" the React App (mounts components, allows you to dig into the DOM))
+
+### Redux
+![](./readme/redux-flow.png)
+
+### LifeCycle in React 16.3
+![](./readme/lifecycle-hook.jpeg)
