@@ -18,4 +18,5 @@ Size Optimization
 
 License
 ---
-MIT
+Copyright (c) [ilia.makarov@me.com](mailto:ilia.makarov@me.com).
+Licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT).
