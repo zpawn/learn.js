@@ -55,8 +55,6 @@ export default () => {
         visibilityFilter
     });
 
-    const store = createStore(todoApp);
-
     const Link = ({ active, children, onClick }) => {
         if (active) {
             return <span>{children}</span>;
@@ -73,6 +71,7 @@ export default () => {
 
     class FilterLink extends Component {
         componentDidMount () {
+            const { store } = this.props;
             this.unsubscribe = store.subscribe(() =>
                 this.forceUpdate()
             );
@@ -84,6 +83,7 @@ export default () => {
 
         render () {
             const props = this.props,
+                { store } = props,
                 state = store.getState();
 
             return <Link
@@ -96,13 +96,13 @@ export default () => {
         }
     }
 
-    const Footer = () => {
+    const Footer = ({ store }) => {
         return (
             <p>
                 Show:{' '}
-                <FilterLink filter='SHOW_ALL'>All</FilterLink>{' '}
-                <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink>{' '}
-                <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>
+                <FilterLink filter='SHOW_ALL' store={store}>All</FilterLink>{' '}
+                <FilterLink filter='SHOW_ACTIVE' store={store}>Active</FilterLink>{' '}
+                <FilterLink filter='SHOW_COMPLETED' store={store}>Completed</FilterLink>
             </p>
         );
     };
@@ -121,7 +121,7 @@ export default () => {
         </ul>
     );
 
-    const AddTodo = () => {
+    const AddTodo = ({ store }) => {
         let input;
         return (
             <div>
@@ -154,6 +154,7 @@ export default () => {
 
     class VisibleTodoList extends Component {
         componentDidMount () {
+            const { store } = this.props;
             this.unsubscribe = store.subscribe(() =>
                 this.forceUpdate()
             );
@@ -165,6 +166,7 @@ export default () => {
 
         render () {
             const props = this.props;
+            const { store } = props;
             const state = store.getState();
 
             return (
@@ -176,18 +178,18 @@ export default () => {
         }
     }
 
-    const TodoApp = () => {
+    const TodoApp = ({ store }) => {
         return (
             <div>
-                <AddTodo/>
-                <VisibleTodoList/>
-                <Footer/>
+                <AddTodo store={store}/>
+                <VisibleTodoList store={store}/>
+                <Footer store={store}/>
             </div>
         );
     };
 
     ReactDOM.render(
-        <TodoApp />,
+        <TodoApp store={createStore(todoApp)} />,
         document.getElementById('root')
     );
 };
