@@ -1,3 +1,3 @@
-import objectAssign from './DanAbramov/02.object-assign';
+import todo from './DanAbramov/03.todo';
 
-objectAssign();
+todo();
