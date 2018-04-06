@@ -1,3 +1,3 @@
-import immutable from './DanAbramov/01.immutable.data';
+import objectAssign from './DanAbramov/02.object-assign';
 
-immutable();
+objectAssign();
