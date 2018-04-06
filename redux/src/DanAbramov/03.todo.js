@@ -5,7 +5,6 @@ import nanoid from 'nanoid';
 
 export default () => {
 
-
     const todo = (state, action) => {
         switch (action.type) {
             case 'ADD_TODO':
@@ -58,11 +57,7 @@ export default () => {
 
     const store = createStore(todoApp);
 
-    const Link = ({
-        active,
-        children,
-        onClick
-    }) => {
+    const Link = ({ active, children, onClick }) => {
         if (active) {
             return <span>{children}</span>;
         }
@@ -126,14 +121,18 @@ export default () => {
         </ul>
     );
 
-    const AddTodo = ({ onAddClick }) => {
+    const AddTodo = () => {
         let input;
         return (
             <div>
                 <input ref={node => input = node}/>
                 <button
                     onClick={() => {
-                        onAddClick(input.value);
+                        store.dispatch({
+                            type: 'ADD_TODO',
+                            id: nanoid(10),
+                            text: input.value
+                        });
                         input.value = '';
                     }}
                 >Add Todo
@@ -153,35 +152,42 @@ export default () => {
         }
     };
 
-    const TodoApp = ({ todos, visibilityFilter }) => {
+    class VisibleTodoList extends Component {
+        componentDidMount () {
+            this.unsubscribe = store.subscribe(() =>
+                this.forceUpdate()
+            );
+        }
+
+        componentWillUnmount () {
+            this.unsubscribe();
+        }
+
+        render () {
+            const props = this.props;
+            const state = store.getState();
+
+            return (
+                <TodoList
+                    todos={getVisibleTodos(state.todos, state.visibilityFilter)}
+                    onTodoClick={id => store.dispatch({ type: 'TOGGLE_TODO', id })}
+                />
+            );
+        }
+    }
+
+    const TodoApp = () => {
         return (
             <div>
-                <AddTodo onAddClick={(text) => {
-                    store.dispatch({
-                        type: 'ADD_TODO',
-                        id: nanoid(10),
-                        text
-                    });
-                }}/>
-                <TodoList todos={getVisibleTodos(todos, visibilityFilter)} onTodoClick={id => store.dispatch({ type: 'TOGGLE_TODO', id })}/>
-                <Footer
-                    visibilityFilter={visibilityFilter}
-                    onFilterClick={filter => store.dispatch({
-                        type: 'SET_VISIBILITY_FILTER',
-                        filter
-                    })}
-                />
+                <AddTodo/>
+                <VisibleTodoList/>
+                <Footer/>
             </div>
         );
     };
 
-    const render = () => {
-        ReactDOM.render(
-            <TodoApp {...store.getState()} />,
-            document.getElementById('root')
-        );
-    };
-
-    store.subscribe(render);
-    render();
+    ReactDOM.render(
+        <TodoApp />,
+        document.getElementById('root')
+    );
 };
