@@ -9,12 +9,13 @@ Flow
 
 Size Optimization
 ---
-| package   | size   | libs include                  |
-|-----------|--------|-------------------------------|
-| full      | 46.7kb | App with Preact + Redux       |
-| stateFul  | 47.9kB | with test Statful Component   |
-| stateLess | 46.9kB | with test StateLess Component |
-| clear     | 19.1kB | Pure Preact without Redux     |
+| package   | size    | libs include                  |
+|-----------|---------|-------------------------------|
+| react     | 125.5kB | Pure React                    |
+| full      | 46.7kb  | App with Preact + Redux       |
+| stateFul  | 47.9kB  | with Test Statful Component   |
+| stateLess | 46.9kB  | with Test StateLess Component |
+| clear     | 19.1kB  | Pure Preact without Redux     |
 
 License
 ---
