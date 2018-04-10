@@ -1,6 +1,3 @@
-/.idea
-/node_modules/
-
-### Lessons
-/lesson.03/lecture/public/build/
-/lesson.03/tasks/contacts/public/build/
+node_modules
+.idea
+/dist

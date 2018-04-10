@@ -1,7 +1,17 @@
 {
-	"presets": [
-		["es2015", { "modules": false }],
-		"react",
-		"stage-0"
-	]
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": [
+          "> 1%",
+          "last 2 versions"
+        ]
+      }
+    }],
+    "stage-2",
+    "react"
+  ],
+  "plugins": [
+    "babel-plugin-syntax-dynamic-import"
+  ]
 }

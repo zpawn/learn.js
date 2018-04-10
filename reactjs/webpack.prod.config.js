@@ -3,8 +3,8 @@ const path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    devtool: 'cheap-module-eval-source-map',
+    mode: 'production',
+    devtool: 'cheap-module-source-map',
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -12,9 +12,9 @@ module.exports = {
         chunkFilename: '[id].js',
         publicPath: ''
     },
-    // resolve: {
-    //     extensions: ['.js', '.jsx']
-    // },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     module: {
         rules: [
             {

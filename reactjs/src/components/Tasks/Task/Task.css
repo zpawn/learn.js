@@ -1,0 +1,14 @@
+.Task {
+    margin: 5px 0;
+}
+
+.Task__remove {
+    margin-right: 10px;
+    background-color: #49290f;
+    color: #fff0bc;
+    border: none;
+}
+
+.Task__remove:hover {
+    cursor: pointer;
+}
