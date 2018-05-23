@@ -1,0 +1,55 @@
+.photo {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 23px;
+
+    & img {
+        width: 293px;
+        height: 293px;
+    }
+
+    & .overlay {
+        position: absolute;
+        top: 0;
+        height: 293px;
+        display: flex;
+        align-items: center;
+        background-color: var(--rgbaColor1);
+        justify-content: center;
+        width: 100%;
+
+        & span {
+            position: relative;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 600;
+
+            &:before {
+                position: absolute;
+                content: '';
+                left: -25px;
+                width: 19px;
+                height: 19px;
+                background-size: 19px 19px;
+                background-repeat: no-repeat;
+            }
+        }
+
+        & .heart {
+            margin-right: 60px;
+            color: var(--paletteColor2);
+
+            &:before {
+                background-image: url('../../theme/assets/images/heart.png');
+            }
+        }
+
+        & .comment {
+            color: var(--paletteColor2);
+
+            &:before {
+                background-image: url('../../theme/assets/images/comment.png');
+            }
+        }
+    }
+}

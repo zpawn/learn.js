@@ -1,0 +1,73 @@
+.header {
+    display: flex;
+    justify-content: center;
+
+    & .layout {
+        display: flex;
+        padding: 26px 40px;
+        height: 24px;
+        min-width: 930px;
+
+        & div {
+            min-width: 357px;
+
+            & a {
+                display: inline-block;
+                width: 176px;
+                height: 35px;
+                margin-top: -7px;
+                background-image: url('../../theme/assets/images/instagram-logo.png');
+                background-repeat: no-repeat;
+                background-size: 176px 35px;
+                cursor: pointer;
+            }
+        }
+
+        & input {
+            min-width: 215px;
+            height: 28px;
+            border: 1px solid var(--paletteColor3);
+            border-radius: 3px;
+            padding: 5px 10px 3px 26px;
+            margin-top: 1px;
+            font-size: 14px;
+            color: var(--paletteColor4);
+            background-image: url('../../theme/assets/images/search.png');
+            background-repeat: no-repeat;
+            background-size: 10px 10px;
+            background-position: 10px 50%;
+            box-sizing: border-box;
+        }
+
+        & nav {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            padding-top: 3px;
+
+            & a {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+
+            & .explore {
+                background-image: url('../../theme/assets/images/explore.png');
+                background-size: 20px 20px;
+                margin-right: 35px;
+            }
+
+            & .likes {
+                background-image: url('../../theme/assets/images/likes.png');
+                background-size: 20px 20px;
+                margin-right: 35px;
+            }
+
+            & .profile {
+                background-image: url('../../theme/assets/images/profile.png');
+                background-size: 20px 20px;
+            }
+        }
+    }
+}
