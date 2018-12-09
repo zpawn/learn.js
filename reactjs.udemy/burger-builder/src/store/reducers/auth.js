@@ -2,11 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../shared/Utility';
 
 const initState = {
-    token: null,
-    userId: null,
-    error: null,
-    loading: null,
-    redirectPath: '/'
+    c
 };
 
 const authStart = (state, action) => {
