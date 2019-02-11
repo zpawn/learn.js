@@ -12,7 +12,8 @@
 
 <div id="app">
     <button v-on:click="increase(2, $event)">Click</button>
-    <p>{{ counter }}</p>
+    <button v-on:click="counter++">Click</button>
+    <p>{{ counter }}: {{ counter > 10 ? 'Greater than 10' : 'Smaller than 10' }}</p>
     
     <hr>
     
