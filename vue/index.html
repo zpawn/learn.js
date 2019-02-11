@@ -26,7 +26,9 @@
             changeTitle: function (event) {
                 this.title = event.target.value
             },
-            sayHello: () => 'Aloha!'
+            sayHello: function () {
+                return this.title
+            },
         }
     });
 </script>
