@@ -22,7 +22,7 @@
 <div id="app">
     <div class="demo" :style="{ backgroundColor: color }"></div>
     <div class="demo" :style="myStyles"></div>
-    <div class="demo"></div>
+    <div class="demo" :style="[myStyles, { height: width + 'px' }]"></div>
 
     <hr>
 
