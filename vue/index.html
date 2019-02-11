@@ -13,6 +13,7 @@
 <div id="app">
     <button v-on:click="increase">Click</button>
     <p>{{ counter }}</p>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
 </div>
 
 <script>
@@ -20,11 +21,17 @@
         el: '#app',
         data: {
             counter: 0,
+            x: 0,
+            y: 0,
         },
         methods: {
             increase: function () {
                 this.counter += 1
-            }
+            },
+            updateCoordinates: function (event) {
+                this.x = event.clientX;
+                this.y = event.clientY
+            },
         }
     });
 </script>
