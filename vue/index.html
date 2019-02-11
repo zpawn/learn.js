@@ -11,7 +11,7 @@
 <body>
 
 <div id="app">
-    <button v-on:click="increase">Click</button>
+    <button v-on:click="increase(2, $event)">Click</button>
     <p>{{ counter }}</p>
     <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
 </div>
@@ -25,8 +25,8 @@
             y: 0,
         },
         methods: {
-            increase: function () {
-                this.counter += 1
+            increase: function (step, event) {
+                this.counter += step
             },
             updateCoordinates: function (event) {
                 this.x = event.clientX;
