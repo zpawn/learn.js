@@ -6,28 +6,37 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue.js</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .red { background-color: #f00; }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
 </head>
 <body>
 
 <div id="app">
-    <button v-on:click="changeLink">Click to change Link</button>
-    <button @click="changeLink">Short Click to change Link</button>
-    <a v-bind:href="link">Link</a>
-    <a :href="link">Short Link</a>
+    <div
+            class="demo"
+            @click="attachRed = !attachRed"
+            :class="{red: attachRed}"
+    ></div>
+    <div class="demo"></div>
+    <div class="demo"></div>
 </div>
 
 <script>
     new Vue({
         el: '#app',
         data: {
-            link: '//google.com'
+            attachRed: false
         },
-        methods: {
-            changeLink: function () {
-                this.link = '//apple.com';
-            }
-        }
     });
 </script>
 </body>
