@@ -13,11 +13,18 @@
 <div id="app">
     <button v-on:click="increase(2, $event)">Click</button>
     <p>{{ counter }}</p>
+    
+    <hr>
+    
     <p v-on:mousemove="updateCoordinates">
         <span v-on:mousemove.stop>DEAD SPOT</span> -
         [ Coordinates: {{ x }} / {{ y }} ]
         - <span v-on:mousemove="dummy">DEAD SPOT</span>
     </p>
+
+    <hr>
+
+    <input type="text" v-on:keyup.enter.space="triggerMe">
 </div>
 
 <script>
@@ -38,6 +45,9 @@
             },
             dummy: function (event) {
                 event.stopPropagation()
+            },
+            triggerMe: function () {
+                console.log('[triggered]');
             }
         }
     });
