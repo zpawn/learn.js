@@ -20,31 +20,18 @@
 <body>
 
 <div id="app">
-    <div class="demo" :style="{ backgroundColor: color }"></div>
-    <div class="demo" :style="myStyles"></div>
-    <div class="demo" :style="[myStyles, { height: width + 'px' }]"></div>
-
-    <hr>
-
-    <input type="text" v-model="color">
-    <input type="text" v-model="width">
+    <button @click="show = !show">Switch</button>
+    <p v-if="show">You can see me! <span>Hello!</span></p>
+    <p v-else>Now you see me</p>
+    <p>Do you also see me?</p>
 </div>
 
 <script>
     new Vue({
         el: '#app',
         data: {
-            color: 'gray',
-            width: 100,
+            show: true
         },
-        computed: {
-            myStyles: function () {
-                return {
-                    backgroundColor: this.color,
-                    width: this.width + 'px'
-                }
-            }
-        }
     });
 </script>
 </body>
