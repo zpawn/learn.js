@@ -24,11 +24,17 @@
         <li v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</li>
     </ul>
 
+    <hr>
+
     <ul>
         <li v-for="person in persons">
             <div v-for="(value, key, index) in person">{{ key }}: {{ value }} ({{ index }})</div>
         </li>
     </ul>
+
+    <hr>
+
+    <span v-for="n in 9">{{ n }}</span>
 </div>
 
 <script>
