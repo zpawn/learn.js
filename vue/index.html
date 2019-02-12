@@ -24,17 +24,22 @@
         <li v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</li>
     </ul>
 
-    <template v-for="(ingredient, index) in ingredients">
-        <h1>{{ ingredient }}</h1>
-        <p>{{ index }}</p>
-    </template>
+    <ul>
+        <li v-for="person in persons">
+            <div v-for="(value, key, index) in person">{{ key }}: {{ value }} ({{ index }})</div>
+        </li>
+    </ul>
 </div>
 
 <script>
     new Vue({
         el: '#app',
         data: {
-            ingredients: ['meat', 'fruit', 'cookies']
+            ingredients: ['meat', 'fruit', 'cookies'],
+            persons: [
+                { name: 'Max', age: '27', color: 'red' },
+                { name: 'Anna', age: 'unknown', color: 'blue' },
+            ]
         },
     });
 </script>
