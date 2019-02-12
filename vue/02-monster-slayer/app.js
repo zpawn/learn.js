@@ -30,7 +30,12 @@ new Vue({
       this.monsterAttack();
     },
 
-    heal: function () {},
+    heal: function () {
+      (this.playerHealth <= 90)
+        ? this.playerHealth += 10
+        : this.playerHealth = 100;
+      this.monsterAttack();
+    },
 
     giveUp: function () {},
 
