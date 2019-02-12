@@ -8,6 +8,7 @@ const vm1 = new Vue({
     show: function () {
       this.showParagraph = true;
       this.updateTitle('The VueJS Instance (Updated)');
+      console.log('[show:ref]', this.$refs);
     },
     updateTitle: function (title) {
       this.title = title;
@@ -28,6 +29,7 @@ const vm1 = new Vue({
 setTimeout(() => {
   vm1.title = 'Changed from Timer';
 }, 3000);
+vm1.$refs.heading.innerText = 'Something else';
 
 const vm2 = new Vue({
   el: '#app2',
