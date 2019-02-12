@@ -1,3 +1,9 @@
+Vue.component('hello', {
+  template: '<h1>Hello, Component!</h1>'
+});
+
+////
+
 const vm1 = new Vue({
   data: {
     title: 'The VueJS Instance',
@@ -32,6 +38,8 @@ setTimeout(() => {
 }, 3000);
 vm1.$refs.heading.innerText = 'Something else';
 
+////
+
 const vm2 = new Vue({
   el: '#app2',
   data: {
@@ -44,10 +52,14 @@ const vm2 = new Vue({
   }
 });
 
+////
+
 const vm3 = new Vue({
   template: '<h1>Hello, App3!</h1>',
 });
 vm3.$mount('#app3');
+
+////
 
 const vm4 = new Vue({
   template: '<h1>Hello, App4!</h1>',
