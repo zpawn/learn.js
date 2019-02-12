@@ -21,8 +21,9 @@
 
 <div id="app">
     <ul>
-        <li v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</li>
+        <li v-for="(ingredient, i) in ingredients" :key="i">{{ ingredient }} ({{ i }})</li>
     </ul>
+    <button @click="ingredients.push('spices')">Add New</button>
 
     <hr>
 
