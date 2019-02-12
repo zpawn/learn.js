@@ -1,5 +1,4 @@
 const vm1 = new Vue({
-  el: '#app1',
   data: {
     title: 'The VueJS Instance',
     showParagraph: false
@@ -26,6 +25,8 @@ const vm1 = new Vue({
   }
 });
 
+vm1.$mount('#app1');
+
 setTimeout(() => {
   vm1.title = 'Changed from Timer';
 }, 3000);
@@ -42,3 +43,14 @@ const vm2 = new Vue({
     }
   }
 });
+
+const vm3 = new Vue({
+  template: '<h1>Hello, App3!</h1>',
+});
+vm3.$mount('#app3');
+
+const vm4 = new Vue({
+  template: '<h1>Hello, App4!</h1>',
+});
+vm4.$mount();
+document.getElementById('app4').appendChild(vm4.$el);
