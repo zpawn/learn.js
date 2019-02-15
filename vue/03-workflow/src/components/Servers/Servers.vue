@@ -17,5 +17,7 @@
 </script>
 
 <style scoped>
-
+  div {
+    border: 1px solid #00f
+  }
 </style>
