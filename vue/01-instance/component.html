@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueJS Component</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+<div id="app">
+  <my-cmp></my-cmp>
+  <hr>
+  <my-cmp></my-cmp>
+</div>
+
+<script>
+  Vue.component('my-cmp', {
+    data: function () {
+      return { status: 'Critical' }
+    },
+    template: `<p>Server: {{ status }} (<button @click="changeStatus">Change</button>)</p>`,
+    methods: {
+      changeStatus: function () {
+        this.status = 'Normal';
+      }
+    }
+  });
+
+  new Vue({
+    el: '#app',
+  })
+</script>
+
+</body>
+</html>
