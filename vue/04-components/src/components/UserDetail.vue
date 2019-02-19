@@ -2,13 +2,18 @@
   <section class="component">
     <h3>You may view the User Details here</h3>
     <p>Many Details</p>
-    <p>{{ name }}</p>
+    <p>{{ switchName() }}</p>
   </section>
 </template>
 
 <script>
   export default {
-    props: ['name']
+    props: ['name'],
+    methods: {
+      switchName () {
+        return this.name.split("").reverse().join("")
+      }
+    }
   }
 </script>
 
