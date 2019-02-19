@@ -1,25 +1,29 @@
 <template>
   <div class="col-xs-12 col-sm-6">
     <ul class="list-group">
-      <li
-        class="list-group-item"
-        v-for="index in 5"
-        :key="index"
-      >
-        Server #{{ index }}
-      </li>
+      <Server
+        v-for="server in servers"
+        :key="server.id"
+        :server="server"
+      ></Server>
     </ul>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "Servers"
-    }
+  import Server from './Server';
+  import EventBus from '../../EventBus';
+
+  export default {
+    name: "Servers",
+    data () {
+      return {
+        servers: EventBus.$data.servers
+      }
+    },
+    components: { Server },
+  }
 </script>
 
 <style scoped>
-  div {
-    border: 1px solid #00f
-  }
 </style>
