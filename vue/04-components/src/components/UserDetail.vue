@@ -2,7 +2,8 @@
   <section class="component">
     <h3>You may view the User Details here</h3>
     <p>Many Details</p>
-    <p>{{ switchName() }}</p>
+    <p>User Name: {{ switchName() }}</p>
+    <p>User Age: {{ userAge }}</p>
     <button @click="resetName">ResetName</button>
     <button @click="resetFn()">ResetName</button>
   </section>
@@ -18,7 +19,8 @@
       },
       firstName: String,
       fullName: [String, Object],
-      resetFn: Function
+      resetFn: Function,
+      userAge: Number
     },
     methods: {
       switchName () {
@@ -36,3 +38,5 @@
     background-color: lightcoral;
   }
 </style>
+
+<p></p>
