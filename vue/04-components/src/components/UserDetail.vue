@@ -4,6 +4,7 @@
     <p>Many Details</p>
     <p>{{ switchName() }}</p>
     <button @click="resetName">ResetName</button>
+    <button @click="resetFn()">ResetName</button>
   </section>
 </template>
 
@@ -17,6 +18,7 @@
       },
       firstName: String,
       fullName: [String, Object],
+      resetFn: Function
     },
     methods: {
       switchName () {
