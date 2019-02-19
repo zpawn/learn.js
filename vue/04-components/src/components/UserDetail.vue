@@ -8,7 +8,15 @@
 
 <script>
   export default {
-    props: ['name'],
+    props: {
+      name: {
+        type: String,
+        required: true,
+        default: 'zpawn'
+      },
+      firstName: String,
+      fullName: [String, Object],
+    },
     methods: {
       switchName () {
         return this.name.split("").reverse().join("")
