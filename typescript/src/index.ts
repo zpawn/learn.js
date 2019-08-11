@@ -38,3 +38,18 @@ let car: any = "BMW";
 console.log(car);
 car = { brand: 'BMW', series: 3 };
 console.log(car);
+
+// function
+function getName(): string {
+  return myName
+}
+
+// void
+function sayHello(): void {
+  console.log('Hello!');
+}
+
+// argument types
+function multiply(v1: number, v2:number): number {
+  return v1 * v2
+}
