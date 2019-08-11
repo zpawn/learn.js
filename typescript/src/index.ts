@@ -110,6 +110,14 @@ function neverReturns(): never {
   throw new Error('An error!')
 }
 
+// Nullable type
+let canBeNull: number | null = 12;
+canBeNull = null;
+let canAlsoBeNull;
+canAlsoBeNull = null;
+let canThisBeNull = null;
+canThisBeNull = 12;
+
 
 
 
