@@ -60,3 +60,58 @@ let myMultiply: (a: number, b: number) => number;
 // myMultiply();
 myMultiply = multiply;
 myMultiply(2, 10);
+
+// object
+let userData: { name: string, age: number } = {
+  name: 'Max',
+  age: 27,
+};
+// userData = {
+//   a: 'Hello',
+//   b: 22,
+// }
+
+// complex object
+let complex: { data: number[], output: (all: boolean) => number[] } = {
+  data: [100, 3.14, 10],
+  output: function(all: boolean) {
+    return this.data
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
