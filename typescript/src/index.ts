@@ -50,6 +50,13 @@ function sayHello(): void {
 }
 
 // argument types
-function multiply(v1: number, v2:number): number {
-  return v1 * v2
+function multiply(value1: number, value2: number): number {
+  return value1 * value2
 }
+
+// function types
+let myMultiply: (a: number, b: number) => number;
+// myMultiply = sayHello;
+// myMultiply();
+myMultiply = multiply;
+myMultiply(2, 10);
