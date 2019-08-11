@@ -24,14 +24,32 @@ person.printAge();
 // person.setType('Cool guy');
 
 // Inheritance
-
 class Max extends Person {
   constructor(username: string) {
     super('Max', 'max');
     this.age = 31;
-    console.log(this.type)
+    // console.log(this.type)
   }
 }
 
 const max = new Max('max');
 console.log(max);
+
+// Getters & Setters
+class Plant {
+  private _species: string = 'Default';
+
+  get species() {
+    return this._species
+  }
+  set species(value: string) {
+    this._species = (value.length > 3) ? value : 'Defaule';
+  }
+}
+
+let plant = new Plant();
+console.log(plant.species);
+plant.species = 'AB';
+console.log(plant.species);
+plant.species = 'Green Plant';
+console.log(plant.species);
