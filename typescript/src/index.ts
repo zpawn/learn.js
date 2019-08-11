@@ -115,40 +115,5 @@ let canBeNull: number | null = 12;
 canBeNull = null;
 let canAlsoBeNull;
 canAlsoBeNull = null;
-let canThisBeNull = null;
+let canThisBeNull: number | null = null;
 canThisBeNull = 12;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
