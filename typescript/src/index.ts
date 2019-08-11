@@ -79,6 +79,19 @@ let complex: { data: number[], output: (all: boolean) => number[] } = {
   }
 };
 
+// type alias
+type Complex = {
+  data: number[],
+  output: (all: boolean) => number[],
+};
+
+let complex2: Complex = {
+  data: [100, 3.14, 10],
+  output: function(all: boolean) {
+    return this.data
+  }
+};
+
 
 
 
