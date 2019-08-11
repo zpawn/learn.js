@@ -104,6 +104,11 @@ if (typeof finalValue == 'number') {
   console.log('the final value is number')
 }
 
+// never
+
+function neverReturns(): never {
+  throw new Error('An error!')
+}
 
 
 
