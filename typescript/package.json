@@ -8,7 +8,8 @@
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
-    "start": "lite-server"
+    "start": "lite-server",
+    "check": "yarn run type-check"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
