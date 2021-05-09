@@ -6,7 +6,7 @@
     "@hocs/debounce-handler": "^0.4.1",
     "@material-ui/core": "^1.4.3",
     "axios": "^0.18.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4",
